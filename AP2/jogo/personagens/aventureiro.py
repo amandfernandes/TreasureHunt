@@ -13,12 +13,8 @@ class Aventureiro:
         self.nome = nome
 
     def ver_atributos(self):
-        print(self.nome)
-        print(self.mochila)
-        print(self.posicao)
         print(self.forca)
         print(self.defesa)
-        print(self.vida_max)
         print(self.vida_atual)
 
 
@@ -56,6 +52,16 @@ class Aventureiro:
 
     def ver_mochila(self):
         print(self.mochila)
+
+    def recuperar_vida(self, quantidade):
+        self.vida = min(self.vida + (20 * quantidade), self.vida_max)
+
+    def aumentar_forca(self, quantidade):
+        self.forca += quantidade
+
+    def aumentar_defesa(self, quantidade):
+        self.defesa += quantidade
+
 
 if __name__ == "__main__":
     p1 = Aventureiro("tay")

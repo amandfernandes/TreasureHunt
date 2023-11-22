@@ -6,24 +6,23 @@ from jogo.personagens import aventureiro, monstro
 
 def interagir_item(p1):
     p1.ver_mochila()
+    escolha = input(print("Escolha um item para usar (digite o nome) ou pressione Enter para voltar: "))
+    #while escolha not in p1.mochila:
+     #   print("Item não encontrado.")
+    #else:
+    #    pass
+    for escolha in p1.mochila:
+       if escolha == item.nome:
+           item.usar_item(p1)
+           print(f"{item.nome} usado!")
+           return
+    print("Item não encontrado na mochila.")
+    
     """
     - lista os itens da mochila
     - pede para o jogador escolher o item
     - usa o item caso exista, ou diz que não achou aquele item na mochila
     """
-
-""""def sorteio():
-    opcoes = ["Nada", "Monstro", "Item"]
-    temp = random.randint(1,10)
-
-    if temp in [1, 2, 3, 4]:
-        turno = opcoes[0]
-    elif temp in [5, 6, 7, 8]:
-        turno = opcoes[1]
-    elif temp in [9, 10]:
-        turno = opcoes[2]
-    print(turno)
-    return turno"""
 
 def movimentar(p1, dir):
     p1.mover(dir)
@@ -33,7 +32,15 @@ def movimentar(p1, dir):
     if turno == "Nada":
         return True
     elif turno == "Item":
+
+        itens = [item.item1, item.item2, item.item3, item.item4, item.item5]
+
+        it = random.choices(itens, weights=[0.5, 0.3, 0.05, 0.1, 0.05])
+        p1.coletar_item(it)
+        print(f"Item coletado:{it.nome}")
+        breakpoint()
         return True
+
     elif turno == "Monstro":
         m1 = monstro.Monstro
         combate.combater(p1, m1)
