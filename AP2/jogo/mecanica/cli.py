@@ -12,19 +12,32 @@ def interagir_item(p1):
     - usa o item caso exista, ou diz que não achou aquele item na mochila
     """
 
+""""def sorteio():
+    opcoes = ["Nada", "Monstro", "Item"]
+    temp = random.randint(1,10)
+
+    if temp in [1, 2, 3, 4]:
+        turno = opcoes[0]
+    elif temp in [5, 6, 7, 8]:
+        turno = opcoes[1]
+    elif temp in [9, 10]:
+        turno = opcoes[2]
+    print(turno)
+    return turno"""
+
 def movimentar(p1, dir):
     p1.mover(dir)
-    opcoes = ["nada", "item", "monstro"]
-    turno = (random.choice(opcoes))
+    opcoes = ["Nada", "Monstro", "Item"]
+    turno = "".join(random.choices(opcoes, weights=[0.4, 0.4, 0.2]))
     print(turno)
-
-    if turno == "nada":
+    if turno == "Nada":
         return True
-    elif turno == "item":
+    elif turno == "Item":
         return True
-    elif turno == "monstro":
+    elif turno == "Monstro":
         m1 = monstro.Monstro
         combate.combater(p1, m1)
+        m1.vida = random.randint(10,100)
         if p1.vida_atual < 0:
             return False
         else:

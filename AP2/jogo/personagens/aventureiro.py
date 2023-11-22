@@ -46,7 +46,16 @@ class Aventureiro:
     def defender(self, dano):
         x = dano - self.defesa
         self.vida_atual -= x
+        
+    def esta_vivo(self):
+        vivo = self.vida_atual > 0
+        return vivo
+    
+    def coletar_item(self, item):
+        self.mochila.append(item)
 
+    def ver_mochila(self):
+        print(self.mochila)
 
 if __name__ == "__main__":
     p1 = Aventureiro("tay")
@@ -64,6 +73,12 @@ if __name__ == "__main__":
     print(p1.atacar())
     p1.defender(5)
     p1.ver_atributos()
+    print("-"*20)
+    print(p1.esta_vivo())
+    Aventureiro.coletar_item(p1,5)
+    Aventureiro.coletar_item(p1,'oi')
+    Aventureiro.coletar_item(p1,'folk')
+    Aventureiro.ver_mochila(p1)
 
 
     #atributos iniciais
@@ -88,8 +103,6 @@ if __name__ == "__main__":
     def ver_mochila(self):
         pass
 
-    def esta_vivo(self):
-        pass
 
     
           """

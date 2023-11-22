@@ -18,6 +18,8 @@ class Monstro:
     def esta_vivo(self):
         vivo = self.vida > 0
         return vivo
+    
+    
 
 if __name__ == "__main__":
     m1 = Monstro
