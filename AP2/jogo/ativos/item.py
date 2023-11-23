@@ -8,24 +8,14 @@ class Item:
         self.tipo = tipo
         self.intensidade = intensidade
 
-    def usar_item(self, p1):
-        if self.tipo == "Vida".lower:
-            aventureiro.recuperar_vida(p1, self.intensidade)
-        elif self.tipo == "Forca".lower:
-            aventureiro.aumentar_forca(p1, self.intensidade)
-        elif self.tipo == "Defesa".lower:
-            aventureiro.aumentar_defesa(p1, self.intensidade)
-
-item1 = Item("Poção de Vida", "Vida", 1)
-item2 = Item("Poção de Vida", "Vida", 2)
-item3 = Item("Poção de Defesa", "Defesa", 1)
-item4 = Item("Poção de Força", "Força", 1)
-item5 = Item("Poção de Força", "Força", 2)
 
 if __name__ == "__main__":
-    print(item1.nome, item1.tipo, item1.intensidade)
-    print(item2.nome, item2.tipo, item2.intensidade)
-    print(item3.nome, item3.tipo, item3.intensidade)
+    ex1 = Item("Poçao 1", "Força", 2)
+    ex2 = Item("Poçao 2", "Vida", 2)
+    ex3 = Item("Poçao 3", "Defesa", 1)
+    print(ex1.nome, ex1.tipo, ex1.intensidade)
+    print(ex2.nome, ex2.tipo, ex2.intensidade)
+    print(ex3.nome, ex3.tipo, ex3.intensidade)
 
 
 """"    

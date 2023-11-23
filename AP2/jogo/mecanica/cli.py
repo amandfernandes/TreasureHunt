@@ -7,17 +7,13 @@ from jogo.personagens import aventureiro, monstro
 def interagir_item(p1):
     p1.ver_mochila()
     escolha = input(print("Escolha um item para usar (digite o nome) ou pressione Enter para voltar: "))
-    #while escolha not in p1.mochila:
-     #   print("Item não encontrado.")
-    #else:
-    #    pass
-    for escolha in p1.mochila:
-       if escolha == item.nome:
-           item.usar_item(p1)
-           print(f"{item.nome} usado!")
-           return
-    print("Item não encontrado na mochila.")
-    
+    for item in p1.mochila:
+        if item.nome == escolha:
+            p1.usar_item(item)
+            print(f"{item.nome} usado!")  
+    else:
+        print("Item não encontrado na mochila.")
+ 
     """
     - lista os itens da mochila
     - pede para o jogador escolher o item
@@ -33,12 +29,26 @@ def movimentar(p1, dir):
         return True
     elif turno == "Item":
 
-        itens = [item.item1, item.item2, item.item3, item.item4, item.item5]
+        itens = ["Força 1", "Força 2", "Vida 1", "Vida 2", "Defesa"]
+        item_selecionado = "".join(random.choices(itens, weights=[0.1, 0.05, 0.5, 0.3, 0.05]))
+        if item_selecionado == "Força 1":
+            item1 = item.Item("Poção de Força", "Força", 1)
+            it = item1
+        elif item_selecionado == "Força 2":
+            item2 = item.Item("Poção de Super Força", "Força", 2)
+            it = item2
+        elif item_selecionado == "Vida 1":
+            item3 = item.Item("Poção de Vida", "Vida", 1)
+            it = item3
+        elif item_selecionado == "Vida 2":
+            item4 = item.Item("Poção de Vida Longa", "Vida", 2)
+            it = item4
+        elif item_selecionado == "Defesa":
+            item5 = item.Item("Poção de Defesa", "Defesa", 1)
+            it = item5
 
-        it = random.choices(itens, weights=[0.5, 0.3, 0.05, 0.1, 0.05])
         p1.coletar_item(it)
         print(f"Item coletado:{it.nome}")
-        breakpoint()
         return True
 
     elif turno == "Monstro":

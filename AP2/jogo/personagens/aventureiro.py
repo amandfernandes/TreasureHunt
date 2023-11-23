@@ -13,13 +13,14 @@ class Aventureiro:
         self.nome = nome
 
     def ver_atributos(self):
-        print(self.forca)
-        print(self.defesa)
-        print(self.vida_atual)
-
+        print(f"Força Atual: {self.forca}")
+        print(f"Defesa: {self.defesa}")
+        print(f"Vida Atual: {self.vida_atual}")
+        print(f"Vida Máxima: {self.vida_max}")
 
     def ver_mochila(self):
-        print(self.mochila)
+        for item in self.mochila:
+            print(item.nome)
 
     def mover(self, dir):
         posicao = self.posicao
@@ -41,7 +42,7 @@ class Aventureiro:
 
     def defender(self, dano):
         x = dano - self.defesa
-        self.vida_atual -= x
+        self.vida_atual = min(self.vida_atual - x, self.vida_max)
         
     def esta_vivo(self):
         vivo = self.vida_atual > 0
@@ -50,17 +51,23 @@ class Aventureiro:
     def coletar_item(self, item):
         self.mochila.append(item)
 
-    def ver_mochila(self):
-        print(self.mochila)
-
     def recuperar_vida(self, quantidade):
-        self.vida = min(self.vida + (20 * quantidade), self.vida_max)
+        self.vida_atual = min(self.vida_atual + 20 * quantidade, self.vida_max)
 
     def aumentar_forca(self, quantidade):
         self.forca += quantidade
 
     def aumentar_defesa(self, quantidade):
         self.defesa += quantidade
+
+    def usar_item(self, it1):
+        if it1.tipo == "Vida":
+            self.recuperar_vida(it1.intensidade)
+        elif it1.tipo == "Força":
+            self.aumentar_forca(it1.intensidade)
+        elif it1.tipo == "Defesa":
+            self.aumentar_defesa(it1.intensidade)
+        self.mochila.remove(it1)
 
 
 if __name__ == "__main__":
@@ -81,10 +88,14 @@ if __name__ == "__main__":
     p1.ver_atributos()
     print("-"*20)
     print(p1.esta_vivo())
-    Aventureiro.coletar_item(p1,5)
-    Aventureiro.coletar_item(p1,'oi')
-    Aventureiro.coletar_item(p1,'folk')
-    Aventureiro.ver_mochila(p1)
+    print("-"*20)
+    print(f"vida:{p1.vida_atual}")
+    print(f"vida max:{p1.vida_max}")
+
+
+
+
+
 
 
     #atributos iniciais
