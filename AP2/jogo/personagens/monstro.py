@@ -1,38 +1,43 @@
 import random
 
 class Monstro:
-    forca = random.randint(5,25)
-    defesa = random.randint(5,10)
-    vida = random.randint(10,100)
-
-    def __init__(self):
-        pass
+    
+    def __init__(self, nome):
+        self.nome = nome
+        forca = random.randint(5,25)
+        defesa = random.randint(5,10)
+        vida = random.randint(10,100)
+        self.forca = forca
+        self.defesa = defesa
+        self.vida = vida
 
     def atacar(self):
         return self.forca
     
     def defender(self, dano):
         x = dano - self.defesa
+        if x < 0:
+            x = 0
         self.vida -= x
 
     def esta_vivo(self):
-        vivo = self.vida > 0
+        vivo = self.vida >= 0
         return vivo
-    
     
 
 if __name__ == "__main__":
-    m1 = Monstro
+    m1 = Monstro("a")
     print(Monstro.esta_vivo(m1))
-    
-    """Atributos:
-Força: um inteiro aleatório entre 5 e 25
-Defesa: um inteiro aleatório entre 5 e 10
-Vida: um inteiro aleatório entre 10 e 100
-Métodos:
-Atacar: retorna um inteiro igual à força;
-Defender: recebe como parâmetro um valor de dano, 
-e reduz desse valor a defesa do monstro. 
-O valor final é reduzido da vida atual do monstro;
+    m1.defender(15)
+    print(m1.forca)
+    print(m1.defesa)
+    m2 = Monstro("b")
+    print(m2.forca)
+    print(m2.defesa)
+    m3 = Monstro("c")
+    print(m3.forca)
+    print(m3.defesa)
+    m4 = Monstro("c")
+    print(m4.forca)
+    print(m4.defesa)
 
-Esta vivo: retorna um booleano informando se o mosntro está vivo."""

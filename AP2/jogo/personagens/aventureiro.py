@@ -1,7 +1,7 @@
 import random
 
 class Aventureiro:
-    mochila = [] # é pra ser do tipo item
+    mochila = []
     posicao = [0,0]
     forca = random.randint(10,18)
     defesa = random.randint(10,18)
@@ -13,14 +13,19 @@ class Aventureiro:
         self.nome = nome
 
     def ver_atributos(self):
+        print("-" * 20)
         print(f"Força Atual: {self.forca}")
         print(f"Defesa: {self.defesa}")
         print(f"Vida Atual: {self.vida_atual}")
         print(f"Vida Máxima: {self.vida_max}")
+        print("-" * 20)
 
     def ver_mochila(self):
+        print("-" * 20)
+        print("Itens na mochila: ")
         for item in self.mochila:
             print(item.nome)
+        print("-" * 20)
 
     def mover(self, dir):
         posicao = self.posicao
@@ -42,11 +47,12 @@ class Aventureiro:
 
     def defender(self, dano):
         x = dano - self.defesa
-        self.vida_atual = min(self.vida_atual - x, self.vida_max)
-        
+        if x < 0:
+            x = 0
+        self.vida_atual -= x
+
     def esta_vivo(self):
-        vivo = self.vida_atual > 0
-        return vivo
+        return self.vida_atual >= 0
     
     def coletar_item(self, item):
         self.mochila.append(item)
@@ -91,36 +97,16 @@ if __name__ == "__main__":
     print("-"*20)
     print(f"vida:{p1.vida_atual}")
     print(f"vida max:{p1.vida_max}")
-
-
-
-
-
-
-
-    #atributos iniciais
-    """
-    Nome: informado pelo jogador assim que o jogo começa;
-    Força: um inteiro aleatório entre 10 e 18;
-    Defesa: um inteiro aleatório entre 10 e 18;
-    Vida Máxima: um inteiro aleatório entre 100 e 120;
-    Vida Atual: um inteiro, inicialmente igual à Vida Máxima;
-    Mochila: uma lista de objetos do tipo Item, que se inicia vazia;
-    Posição: uma lista com dois elementos, inicializado como [0, 0];
-  
-      #demais metodos
-
-
-    def coletar(self):
-        pass
-
-    def usar_item(self):
-        pass
-
-    def ver_mochila(self):
-        pass
-
-
-    
-          """
-    
+    print("-"*20)
+    dano = p1.atacar()
+    p1.defender(dano)
+    print(f"vida:{p1.vida_atual}")
+    dano = p1.atacar()
+    p1.defender(dano)
+    print(f"vida:{p1.vida_atual}")
+    dano = p1.atacar()
+    p1.defender(dano)
+    print(f"vida:{p1.vida_atual}")
+    dano = p1.atacar()
+    p1.defender(dano)
+    print(f"vida:{p1.vida_atual}")

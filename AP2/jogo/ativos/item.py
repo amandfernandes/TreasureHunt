@@ -16,17 +16,3 @@ if __name__ == "__main__":
     print(ex1.nome, ex1.tipo, ex1.intensidade)
     print(ex2.nome, ex2.tipo, ex2.intensidade)
     print(ex3.nome, ex3.tipo, ex3.intensidade)
-
-
-""""    
-Atributos:
-Nome: nome do item;
-Tipo: classificação do item;
-Intensidade: bônus sobre o atributo (a depender do tipo);
-"""
-""""    
-Atributos:
-Nome: nome do item;
-Tipo: classificação do item;
-Intensidade: bônus sobre o atributo (a depender do tipo);
-"""

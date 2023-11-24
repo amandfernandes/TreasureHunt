@@ -1,30 +1,28 @@
 import random
+from datetime import time
 
 from jogo.ativos import item, mapa, tesouro
 from jogo.mecanica import combate
 from jogo.personagens import aventureiro, monstro
 
 def interagir_item(p1):
-    p1.ver_mochila()
-    escolha = input(print("Escolha um item para usar (digite o nome) ou pressione Enter para voltar: "))
-    for item in p1.mochila:
-        if item.nome == escolha:
-            p1.usar_item(item)
-            print(f"{item.nome} usado!")  
+    if len(p1.mochila) == 0:
+        print("Mochila Vazia")
     else:
-        print("Item não encontrado na mochila.")
- 
-    """
-    - lista os itens da mochila
-    - pede para o jogador escolher o item
-    - usa o item caso exista, ou diz que não achou aquele item na mochila
-    """
+        p1.ver_mochila()
+        escolha = input(print("Escolha um item para usar (digite o nome): "))
+        for item in p1.mochila:
+            if item.nome == escolha:
+                p1.usar_item(item)
+                print(f"{item.nome} usado!")  
+            else:
+                print("Item não encontrado na mochila.")
 
-def movimentar(p1, dir):
+
+def movimentar(p1, dir, monstros):
     p1.mover(dir)
     opcoes = ["Nada", "Monstro", "Item"]
     turno = "".join(random.choices(opcoes, weights=[0.4, 0.4, 0.2]))
-    print(turno)
     if turno == "Nada":
         return True
     elif turno == "Item":
@@ -48,36 +46,46 @@ def movimentar(p1, dir):
             it = item5
 
         p1.coletar_item(it)
-        print(f"Item coletado:{it.nome}")
+        print(f"Item coletado: {it.nome}")
         return True
 
     elif turno == "Monstro":
-        m1 = monstro.Monstro
-        combate.combater(p1, m1)
-        m1.vida = random.randint(10,100)
-        if p1.vida_atual < 0:
-            return False
-        else:
+        i = len(monstros) - 1
+        nome = str(i)
+        monstros[i] = monstro.Monstro(nome)
+        combate.combater(p1, monstros[i])
+        monstros.append("")
+        if p1.esta_vivo():
             return True
+        else:
+            return False
 
-    """
-    - movimenta o aventureiro
-    - se ele andou, seleciona uma das opções: nada, item ou monstro
-    - se sorteou monstro, inicializa um monstro e começa um combate
-    - se sorteou item, inicializa um item
-    - retorna False se o aventureiro morrer, e True nos outros casos
-    """
+def dificuldade():
+    print("(1) Fácil\n(2) Normal\n(3) Difícil")
+    dif = input(print("Selecione uma dificuldade (escolha o número): "))
+    if dif == "2":
+        print("Você tem 20 turnos para encontrar o tesouro!")
+        return 20
+    elif dif == "3":
+        print("Você tem 10 turnos para encontrar o tesouro!")
+        return 10 
+    else:
+        print("Nível fácil selecionado por padrão.")
+        return 999
 
 def jogo():
     nome = input("Deseja buscar um tesouro? Primeiro, informe seu nome: ")
     p1 = aventureiro.Aventureiro(nome)
+    dif = dificuldade()
     print(f"Saudações, {nome}! Boa sorte!")
     tes = tesouro.Tesouro()
     mapa.desenhar(p1.posicao, tes.posicao)
-    print (tes.posicao) #teste
+    monstros = [""]
+    movimentos = 0
+
 
     while True:
-        op = input("Insira o seu comando: ").upper()
+        op = input(f"Insira o seu comando (Turno {movimentos}): ").upper()
         if op == "Q":
             print("Já correndo?")
             break
@@ -87,8 +95,9 @@ def jogo():
         elif op == "I":
             interagir_item(p1)
         elif op in ["W", "A", "S", "D"]:
-            if movimentar(p1, op):
+            if movimentar(p1, op, monstros):
                 mapa.desenhar(p1.posicao, tes.posicao)
+                movimentos += 1
             else:
                 print("Game Over...")
                 break
@@ -97,6 +106,10 @@ def jogo():
 
         if p1.posicao == tes.posicao:
             print(f"Parabéns, {p1.nome}! Você encontrou o tesouro!")
+            break
+
+        elif movimentos >= dif:
+            print("Você perdeu... :(")
             break
 
 if __name__ == "__main__":

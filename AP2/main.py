@@ -1,3 +1,10 @@
+"""
+PROGRAMAÇÃO ESTRUTURADA - AP2
+23-11-2023
+PAULA LUIZA OLIVEIRA
+AMANDA FERNANDES
+"""
+
 from jogo.mecanica import cli
 
 def main():
