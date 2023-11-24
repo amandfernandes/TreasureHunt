@@ -1,5 +1,5 @@
-AP2 - Caça tesouro
-Amanda Fernandes
+# AP2 - Caça tesouro
+Amanda Fernandes,
 Paula Luiza
 
 Nova mecânica: 
