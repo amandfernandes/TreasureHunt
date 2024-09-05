@@ -1,4 +1,4 @@
-# AP2 - Caça tesouro
+# Caça ao tesouro em Python
 Amanda Fernandes,
 Paula Luiza
 
