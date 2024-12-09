@@ -8,6 +8,9 @@ def desenhar(personagem, tesouro):
             else:
                 print(".", end=" ")
         print()
+    
+def context():
+    print("Floresta")
 
 if __name__ == "__main__":
     desenhar([0, 0], [2, 4])
