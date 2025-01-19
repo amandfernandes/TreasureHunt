@@ -1,0 +1,101 @@
+RF01: O sistema deve permitir ao jogador escolher uma classe entre feiticeiro, guerreiro ou arqueiro.
+RF02: O sistema deve atribuir habilidades específicas ao jogador com base na classe escolhida.
+RF03: O sistema deve permitir ao jogador personalizar o nome do personagem.
+----------
+RF04: O sistema deve exibir uma introdução narrativa antes do início do jogo, explicando a história de fundo.
+RF05: O sistema deve apresentar uma história única para cada nível do jogo.
+RF06: O sistema deve gerar eventos aleatórios durante o jogo, como armadilhas, encontros com monstros ou descobertas de itens.
+----------
+RF07: O sistema deve gerar um mapa ASCII distinto para cada nível.
+RF08: O sistema deve permitir ao jogador escolher a direção (norte, sul, leste, oeste) para onde deseja se mover.
+RF09: O sistema deve permitir a descoberta de áreas secretas no mapa.
+RF10: O sistema deve narrar cada passo do jogador, informando eventos como encontros com monstros, itens ou NPCs.
+----------
+RF11: O sistema deve disponibilizar três tipos de NPCs: mercador, sábio e curandeiro.
+RF12: O sistema deve permitir que o jogador interaja com os NPCs para:
+Comprar itens (mercador).
+Receber dicas estratégicas (sábio).
+Restaurar vida ou atributos (curandeiro).
+RF13: O sistema deve implementar um comportamento inteligente nos NPCs, permitindo respostas personalizadas com base na situação do jogador.
+----------
+RF14: O sistema deve incluir diferentes tipos de monstros, cada um com habilidades próprias (ex.: envenenamento, regeneração, ataque em área).
+RF15: O sistema deve incluir um monstro chefe em cada nível, com comportamento inteligente e maior dificuldade.
+RF16: O sistema deve permitir combates por turnos, onde o jogador pode:
+Atacar.
+Defender.
+Usar itens.
+RF17: O sistema deve narrar cada movimento do combate, descrevendo ataques, defesas e resultados.
+RF18: O sistema deve calcular a chance de sucesso ou falha nos ataques e defesas com base em fatores externos (ex.: clima, atributos do jogador e tipo de monstro).
+----------
+RF19: O sistema deve conceder pontos de experiência ao jogador ao derrotar monstros.
+RF20: O sistema deve permitir que o jogador suba de nível ao acumular experiência suficiente, aumentando atributos como força, agilidade ou magia.
+RF21: O sistema deve recompensar o jogador com moedas de ouro ao derrotar monstros, variando a quantidade de acordo com o tipo e nível do monstro.
+----------
+RF22: O sistema deve exibir o mapa, monstros, NPCs e outros elementos do jogo usando arte ASCII.
+RF23: O sistema deve mostrar informações na tela, como:
+Status do jogador (vida, mana, nível, experiência).
+Inventário.
+Ouro acumulado.
+RF24: O sistema deve narrar todas as ações do jogador e os principais eventos do jogo em tempo real.
+----------
+RF25: O sistema deve permitir ao jogador coletar itens durante o jogo, como armas, poções de cura, chaves e artefatos mágicos.
+RF26: O sistema deve permitir o uso de itens durante combates ou interações no mapa.
+RF27: O sistema deve incluir itens específicos que desbloqueiam áreas secretas ou ajudam a resolver enigmas.
+----------
+RF28: O sistema deve implementar um ciclo de dia e noite, influenciando o comportamento dos monstros e NPCs.
+RF29: O sistema deve permitir que o clima (ex.: chuva, neblina) influencie batalhas e exploração.
+----------
+RF30: O sistema deve incluir missões secundárias opcionais, como encontrar itens raros ou resgatar NPCs.
+RF31: O sistema deve recompensar o jogador por completar missões secundárias com experiência, itens raros ou moedas de ouro.
+----------
+----------
+RF01: O sistema deve integrar-se a uma API de inteligência artificial para gerar narrativas dinâmicas e personalizadas com base nas ações do jogador.
+RF02: O sistema deve enviar solicitações à API para criar comportamentos únicos para NPCs e monstros, levando em consideração o contexto do jogo e o progresso do jogador.
+RF03: O sistema deve utilizar a API para gerar descrições detalhadas dos ataques, defesas e resultados de cada batalha.
+RF04: A API deve ser responsável por criar eventos aleatórios, como armadilhas, tesouros falsos e encontros com NPCs.
+----------
+RF05: O sistema deve solicitar à API uma introdução narrativa única para cada sessão de jogo, adaptada às escolhas iniciais do jogador.
+RF06: A história de cada nível deve ser gerada dinamicamente pela API, garantindo diversidade e conexão com o progresso do jogador.
+RF07: A narrativa de cada passo do jogador no mapa deve ser personalizada pela API, descrevendo eventos como:
+Descoberta de itens ou áreas secretas.
+Encontros com NPCs ou monstros.
+Mudanças climáticas ou ambientais que afetem o jogo.
+----------
+RF08: O sistema deve utilizar a API para criar interações dinâmicas com NPCs, permitindo que suas respostas variem conforme:
+Situação atual do jogador (nível, vida, itens).
+Decisões anteriores do jogador.
+RF09: O sistema deve solicitar à API comportamentos adaptativos para monstros, incluindo:
+Ataques baseados em estratégia e fraquezas do jogador.
+Decisões como fugir ou adotar uma postura defensiva em momentos críticos.
+----------
+RF10: O sistema deve enviar informações do estado do jogador e do monstro para a API, que retornará:
+Descrições detalhadas dos ataques e defesas.
+Resultados baseados em probabilidades, atributos e condições externas (ex.: clima, ambiente).
+RF11: O sistema deve permitir que o jogador escolha ações em combate (ataque, defesa, uso de itens), e a API deve gerar a resposta do monstro com base nessas escolhas.
+RF12: A API deve gerar resultados narrativos para as batalhas, detalhando os efeitos das ações do jogador e do monstro.
+RF13: A API deve criar comportamentos específicos para chefões, incluindo habilidades únicas e estratégias avançadas.
+----------
+RF14: A API deve gerar descrições personalizadas para a evolução do jogador, como melhorias em atributos e desbloqueio de novas habilidades.
+RF15: O sistema deve solicitar à API eventos que influenciem diretamente o progresso do jogador, como:
+Missões secundárias geradas dinamicamente.
+Dicas ou enigmas dados por NPCs.
+----------
+RF16: A API deve ser utilizada para gerar dinamicamente:
+Mapas ASCII personalizados para cada nível.
+Padrões de comportamento e diálogo para NPCs.
+Encontros aleatórios com monstros e itens.
+Mudanças climáticas e eventos do ambiente (ex.: tempestades, nevoeiros).
+RF17: A API deve criar variações nos mapas para garantir rejogabilidade, com novos layouts, histórias e desafios.
+----------
+RF18: O sistema deve exibir todas as narrativas geradas pela API na interface em tempo real, adaptando-se às ações do jogador.
+RF19: O sistema deve solicitar à API descrições em formato texto que possam ser exibidas em ASCII, como:
+Representações de monstros e NPCs.
+Ilustrações dos ambientes e itens descobertos.
+----------
+RF20: O sistema deve calcular pontos de experiência e moedas de ouro com base nos resultados das batalhas gerados pela API.
+RF21: A quantidade de moedas e pontos deve variar conforme o tipo e nível dos monstros, conforme definido pela lógica da API.
+----------
+RF22: O sistema deve realizar testes constantes na integração com a API para garantir:
+Respostas coerentes e em tempo hábil.
+Narrativas consistentes com o contexto do jogo.
+RF23: O sistema deve implementar um fallback básico caso a API falhe, com mensagens padrão para evitar interrupções na jogabilidade.

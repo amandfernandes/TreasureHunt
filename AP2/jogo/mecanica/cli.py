@@ -1,9 +1,10 @@
 import random
 from datetime import time
 
+from AP2.jogo.personagens import player
 from jogo.ativos import item, mapa, tesouro
 from jogo.mecanica import combate
-from jogo.personagens import aventureiro, monstro
+from AP2.jogo.personagens import monster
 
 def interagir_item(p1):
     if len(p1.mochila) == 0:
@@ -52,7 +53,7 @@ def movimentar(p1, dir, monstros):
     elif turno == "Monstro":
         i = len(monstros) - 1
         nome = str(i)
-        monstros[i] = monstro.Monstro(nome)
+        monstros[i] = monster.Monstro(nome)
         combate.combater(p1, monstros[i])
         monstros.append("")
         if p1.esta_vivo():
@@ -75,7 +76,7 @@ def dificuldade():
 
 def jogo():
     nome = input("Deseja buscar um tesouro? Primeiro, informe seu nome: ")
-    p1 = aventureiro.Aventureiro(nome)
+    p1 = player.Aventureiro(nome)
     dif = dificuldade()
     print(f"Saudações, {nome}! Boa sorte!")
     tes = tesouro.Tesouro()

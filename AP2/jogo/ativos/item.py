@@ -1,4 +1,4 @@
-from jogo.personagens import aventureiro
+from AP2.jogo.personagens import player
 import random
 
 class Item:

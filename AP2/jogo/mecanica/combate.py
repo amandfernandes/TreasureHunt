@@ -1,4 +1,5 @@
-from jogo.personagens import aventureiro, monstro
+from AP2.jogo.personagens import player
+from AP2.jogo.personagens import monster
 
 def combater(p1, m1):
     
@@ -18,6 +19,6 @@ def combater(p1, m1):
     
 
 if __name__ == "__main__":
-    p1 = aventureiro.p1("mid")
-    m1 = monstro.m1()
+    p1 = player.p1("mid")
+    m1 = monster.m1()
     combater(p1,m1)
